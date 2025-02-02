@@ -25,7 +25,7 @@ public class NeteaseShop {
         getMaster().listenForSpigotMasterEvent(SpigotMasterEvent.PLAYER_URGE_SHIP, (player, map) -> {tryShipItem(player);});
     }
 
-    public void finPlayerOrder(Player player, List<String> finOrderList, String orderId) {
+    private void finPlayerOrder(Player player, List<String> finOrderList, String orderId) {
         getMaster().finPlayerOrder(player, finOrderList, new FutureCallback<>() {
             @Override
             public void completed(Map<String, Object> result) {
@@ -46,7 +46,7 @@ public class NeteaseShop {
         });
     }
 
-    public void tryShipItem(Player player) {
+    private void tryShipItem(Player player) {
         getMaster().getPlayerOrderList(player, new FutureCallback<>() {
             @Override
             public void completed(Map<String, Object> result) {
@@ -75,7 +75,7 @@ public class NeteaseShop {
         processOrderItems(response,player);
     }
 
-    public void processOrderItems(ItemResponse response, Player player) {
+    private void processOrderItems(ItemResponse response, Player player) {
         if (response == null) {
             getApi().jsonError(response,player);
             return;
