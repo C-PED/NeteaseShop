@@ -85,7 +85,7 @@ public class NeteaseShop {
             int orderId = entity.getOrderid();
             String cmd = entity.getCmd();
             String[] args = cmd.split(":");
-            facaty.getType(args[1]).run(player,args);
+            facaty.getType(args[0]).run(player,args);
             finOrderIds.add(String.valueOf(orderId));
             getApi().shipmentCompleted(response,player);
         }
