@@ -1,0 +1,6 @@
+name: NeteaseShop
+version: '1.0'
+main: com.cped.neteaseshop.NeteaseShop
+api-version: '1.18'
+load: STARTUP
+authors: ["ShaoqingG"]
