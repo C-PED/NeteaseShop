@@ -10,5 +10,5 @@ public interface ShopAPI {
     void finPlayerOrderCancelled();
     void completed(ItemResponse response);
     void shipmentCompleted(ItemResponse response, Player player);
-    ItemResponse jsonError(ItemResponse response,Player player);
+    void jsonError(ItemResponse response, Player player);
 }
