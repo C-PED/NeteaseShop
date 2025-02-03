@@ -41,7 +41,7 @@ public class NeteaseShop {
 
             @Override
             public void cancelled() {
-                api.finPlayerOrderCancelled();
+                api.finPlayerOrderCancelled(player);
             }
         });
     }
@@ -57,12 +57,12 @@ public class NeteaseShop {
 
             @Override
             public void failed(Exception ex) {
-                getApi().tryShipItemFailed();
+                getApi().tryShipItemFailed(player);
             }
 
             @Override
             public void cancelled() {
-                getApi().tryShipItemCancelled();
+                getApi().tryShipItemCancelled(player);
             }
         });
     }
