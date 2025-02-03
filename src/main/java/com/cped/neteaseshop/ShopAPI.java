@@ -8,7 +8,7 @@ public interface ShopAPI {
     void tryShipItemCancelled();
     void finPlayerOrderFailed();
     void finPlayerOrderCancelled();
-    void completed(ItemResponse response);
+    void completed(ItemResponse response,Player player);
     void shipmentCompleted(ItemResponse response, Player player);
     void jsonError(ItemResponse response, Player player);
 }
