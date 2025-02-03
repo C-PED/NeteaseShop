@@ -3,10 +3,10 @@ package com.cped.neteaseshop;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NeteaseShopFacaty {
+public class NeteaseShopFactory {
     private Map<String, ItemAchieve> types;
 
-    public NeteaseShopFacaty() {
+    public NeteaseShopFactory() {
         types = new HashMap<>();
     }
 

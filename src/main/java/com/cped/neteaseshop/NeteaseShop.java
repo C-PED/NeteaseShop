@@ -13,14 +13,14 @@ import java.util.Map;
 
 @Getter
 public class NeteaseShop {
-    private NeteaseShopFacaty facaty;
+    private NeteaseShopFactory facaty;
     private SpigotMaster master;
     private ShopAPI api;
 
     public NeteaseShop(SpigotMaster master,ShopAPI api){
         this.master = master;
         this.api = api;
-        this.facaty = new NeteaseShopFacaty();
+        this.facaty = new NeteaseShopFactory();
         getMaster().listenForSpigotMasterEvent(SpigotMasterEvent.PLAYER_BUY_ITEM_SUCCESS, (player, map) -> {tryShipItem(player);});
         getMaster().listenForSpigotMasterEvent(SpigotMasterEvent.PLAYER_URGE_SHIP, (player, map) -> {tryShipItem(player);});
     }
