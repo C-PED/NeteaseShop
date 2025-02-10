@@ -18,9 +18,9 @@ public class ItemResponse {
         private long item_id;
         private String uuid;
         private int item_num;
-        private int orderid;
+        private Long orderid;
         private String cmd;
         private long buy_time;
-        private int group;
+        private long group;
     }
 }

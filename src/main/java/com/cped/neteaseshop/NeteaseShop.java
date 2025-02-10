@@ -21,14 +21,22 @@ public class NeteaseShop {
         this.master = master;
         this.api = api;
         this.facaty = new NeteaseShopFactory();
-        getMaster().listenForSpigotMasterEvent(SpigotMasterEvent.PLAYER_BUY_ITEM_SUCCESS, (player, map) -> {tryShipItem(player);});
-        getMaster().listenForSpigotMasterEvent(SpigotMasterEvent.PLAYER_URGE_SHIP, (player, map) -> {tryShipItem(player);});
+        getMaster().enableCustomShopEntry(false);
+        getMaster().listenForSpigotMasterEvent(SpigotMasterEvent.PLAYER_BUY_ITEM_SUCCESS, (player, map) -> {
+            tryShipItem(player);
+        });
+        getMaster().listenForSpigotMasterEvent(SpigotMasterEvent.PLAYER_URGE_SHIP, (player, map) -> {
+            tryShipItem(player);
+        });
     }
 
     private void finPlayerOrder(Player player, List<String> finOrderList) {
         getMaster().finPlayerOrder(player, finOrderList, new FutureCallback<>() {
             @Override
             public void completed(Map<String, Object> result) {
+                if(result.get("entity") == null){
+                    return;
+                }
                 ItemResponse response = Utils.parseResponse(result);
                 api.completed(response,player);
                 handleOrderCompletion(response, player);
@@ -82,7 +90,7 @@ public class NeteaseShop {
         }
         List<String> finOrderIds = new ArrayList<>();
         for (ItemResponse.Entity entity : response.getEntities()) {
-            int orderId = entity.getOrderid();
+            Long orderId = entity.getOrderid();
             String cmd = entity.getCmd();
             String[] args = cmd.split(":");
             facaty.getType(args[0]).run(player,args);
